@@ -12,26 +12,13 @@ The main solver function will be written iteratively.  The sudoku will be repres
 object with many getters and setters.
 
 ### Data set or other source materials
-If you will be working with existing data, where will you get those data from? (Dowload it from a website? access it in a database? create it in a simulation you will build....)
-
-How will you convert that data into a form usable for your project?  
-
-Do your homework here: if you are pulling data from somewhere, actually go download it and look at it. Explain in some detail what your plan is for accomplishing the necessary processing.
-
-If you are using some other starting materails, explain what they are. Basically: anything you plan to use that isn't code.
+We will not be getting any external data, the sudoku solver will be using puzzles that we give it.
 
 ### Deliverable and Demonstration
-Explain exactly what you'll have at the end. What will it be able to do at the live demo?
-
-What exactly will you produce at the end of the project? A piece of software, yes, but what will it do? Here are some questions to think about (and answer depending on your application).
-
-Will it run on some data, like batch mode? Will you present some analytical results of the processing? How can it be re-run on different source data?
-
-Will it be interactive? Can you show it working? This project involves a live demo, so interactivity is good.
+Once our program is complete, we will have a fully working sudoku solver that will be able to take any given sudoku puzzle and solve it. During our presentation we will use the slow solving part of our application to explain the algorithm that we used and to demo the product as well as a quick solve that will show how quickly our solution can solve a puzzle
 
 ### Evaluation of Results
-How will you know if you are successful? 
-If you include some kind of _quantitative analysis,_ that would be good.
+We will know if our program works successfully if it is able to solve multiple different puzzles and can also display our algorithm fully working. 
 
 ## Architecture Diagram
 Upload the architecture diagram you made for your slide presentation to your repository, and include it in-line here.
