@@ -22,7 +22,7 @@ We will know if our program works successfully if it is able to solve multiple d
 
 ## Architecture Diagram
 
-![arch_diagram](https://cloud.githubusercontent.com/assets/11009351/14305556/8c4ac306-fb8b-11e5-9479-a7e2c81e6caf.png)
+![arch_diagram](https://cloud.githubusercontent.com/assets/11009351/14305962/0e9cf0aa-fb90-11e5-89b0-fcf0a1e9ff7d.png)
 
 ## Schedule
 
