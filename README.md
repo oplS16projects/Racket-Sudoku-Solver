@@ -7,9 +7,9 @@ it.  There will also be an additional mode called "slow solve" that will pause f
 the solve.  This will allow the user to watch and understand the algorithm that solves the sudoku.
 
 ### Analysis
-Explain what approaches from class you will bring to bear on the project. Be explicit: e.g., will you use recursion? How? Will you use map/filter/reduce? How? Will you use data abstraction? Will you use object-orientation? Will you use functional approaches to processing your data? Will you use state-modification approaches? A combination?
-
-The idea here is to identify what ideas from the class you will use in carrying out your project. 
+Most of the functions in the solver use recursive aspects to extract data about the sudoku.
+The main solver function will be written iteratively.  The sudoku will be represented as an
+object with many getters and setters.
 
 ### Data set or other source materials
 If you will be working with existing data, where will you get those data from? (Dowload it from a website? access it in a database? create it in a simulation you will build....)
