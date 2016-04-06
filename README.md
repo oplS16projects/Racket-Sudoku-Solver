@@ -21,9 +21,8 @@ Once our program is complete, we will have a fully working sudoku solver that wi
 We will know if our program works successfully if it is able to solve multiple different puzzles and can also display our algorithm fully working. 
 
 ## Architecture Diagram
-Upload the architecture diagram you made for your slide presentation to your repository, and include it in-line here.
 
-Create several paragraphs of narrative to explain the pieces and how they interoperate.
+![arch_diagram](https://cloud.githubusercontent.com/assets/11009351/14305556/8c4ac306-fb8b-11e5-9479-a7e2c81e6caf.png)
 
 ## Schedule
 
