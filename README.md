@@ -26,21 +26,13 @@ Upload the architecture diagram you made for your slide presentation to your rep
 Create several paragraphs of narrative to explain the pieces and how they interoperate.
 
 ## Schedule
-Explain how you will go from proposal to finished product. 
-
-There are three deliverable milestones to explicitly define, below.
-
-The nature of deliverables depend on your project, but may include things like processed data ready for import, core algorithms implemented, interface design prototyped, etc. 
-
-You will be expected to turn in code, documentation, and data (as appropriate) at each of these stages.
-
-Write concrete steps for your schedule to move from concept to working system. 
 
 ### First Milestone (Fri Apr 15)
-What exactly will be turned in on this day? 
+A basic GUI display will be submitted along with a fully functional sudoku solver.  The two will not be linked just yet.
 
 ### Second Milestone (Fri Apr 22)
-What exactly will be turned in on this day? 
+The GUI and the sudoku solver will be linked.  The user will be able to use the "solve" button on the GUI to start
+the agorithm.
 
 ### Final Presentation (last week of semester)
 What additionally will be done in the last chunk of time?
