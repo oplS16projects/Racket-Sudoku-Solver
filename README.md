@@ -53,4 +53,4 @@ I will write the solver for the sudoku for the first milestone.  For the second 
 to work with Yusuf's GUI.
 
 ### Yusuf Yildiz @yyildiz
- 
+For the first milestone I will be working on the GUI and the interactivity of the program which will allow the users to step through Connor's algorithm. For the second milestone, I will make the GUI work with Connors underlying algorithm implementation.
