@@ -48,19 +48,9 @@ What additionally will be done in the last chunk of time?
 ## Group Responsibilities
 Here each group member gets a section where they, as an individual, detail what they are responsible for in this project. Each group member writes their own Responsibility section. Include the milestones and final deliverable.
 
-**Additional instructions for teams of three:** 
-* Remember that you must have prior written permission to work in groups of three (specifically, an approved `FP3` team declaration submission).
-* The team must nominate a lead. This person is primarily responsible for code integration. This work may be shared, but the team lead has default responsibility.
-* The team lead has full partner implementation responsibilities also.
-* Identify who is team lead.
+### Connor McGrory @conno1234
+I will write the solver for the sudoku for the first milestone.  For the second milestone I will adjust the code
+to work with Yusuf's GUI.
 
-In the headings below, replace the silly names and GitHub handles with your actual ones.
-
-### Susan Scheme @susanscheme
-will write the....
-
-### Leonard Lambda @lennylambda
-will work on...
-
-### Frank Functions @frankiefunk 
-Frank is team lead. Additionally, Frank will work on...   
+### Yusuf Yildiz @yyildiz
+ 
