@@ -35,11 +35,10 @@ The GUI and the sudoku solver will be linked.  The user will be able to use the 
 the agorithm.
 
 ### Final Presentation (last week of semester)
-What additionally will be done in the last chunk of time?
+During the last week we'll work on the most curcial part of our presentation, the slow-solving part of our program.
+We'll use this to show the class how our algorithm is workng through the puzzle while we're presenting our project.
 
 ## Group Responsibilities
-Here each group member gets a section where they, as an individual, detail what they are responsible for in this project. Each group member writes their own Responsibility section. Include the milestones and final deliverable.
-
 ### Connor McGrory @conno1234
 I will write the solver for the sudoku for the first milestone.  For the second milestone I will adjust the code
 to work with Yusuf's GUI.
