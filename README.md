@@ -24,6 +24,10 @@ We will know if our program works successfully if it is able to solve multiple d
 
 ![arch_diagram](https://cloud.githubusercontent.com/assets/11009351/14321375/f494b164-fbe6-11e5-8e62-a30142c516d0.png)
 
+There are two main parts to the program: the brute force algorithm which will be written by Connor, and the GUI which will be written by Yusuf.  The brute force algorithm will send information about the sudoku to the GUI as it is being solved.  The GUI then extracts the information from the sudoku it received to create something that the user can see.
+
+If we have time at the end, me way be able to add some additional functionality to our program.  For example, the GUI may be able to reset the puzzle or take a puzzle inputted by the user.  The GUI will then send information to the algorithm so it can prepare another solve.
+
 ## Schedule
 
 ### First Milestone (Fri Apr 15)
