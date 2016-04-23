@@ -6,6 +6,10 @@ says "solve".  When pressed, the brute force algorithm will begin stepping throu
 it.  There will also be an additional mode called "slow solve" that will pause for a short period of time in between
 the solve.  This will allow the user to watch and understand the algorithm that solves the sudoku.
 
+### Updates
+
+As of Fri Apr 22nd, we have the Algorithm and GUI fully completed and functional. Now the only thing that we need to do is join both parts of our project and make sure that they work together.
+
 ### Analysis
 Most of the functions in the solver use recursive aspects to extract data about the sudoku.
 The main solver function will be written iteratively.  The sudoku will be represented as an
