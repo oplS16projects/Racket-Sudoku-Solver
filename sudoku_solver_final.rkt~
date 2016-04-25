@@ -1,6 +1,7 @@
 #lang racket/gui
 
 (require racket/gui/base)
+(require slideshow/text)
 
 (define (get-row s row)
   (if (= row 1)
@@ -182,19 +183,12 @@
 
 (define frame (new frame% [label "Sudoku Solver"] [width w] [height (+ 100 h)]))
 
-
 (define panel1 (new horizontal-panel% [parent frame]
                                      [alignment '(center center)]
                                      [min-height h]
                                      [min-width w]
                                      [stretchable-width false]	 
                                      [stretchable-height false]))
-
-
-(define done-frame (new frame% [label "Sudoku Complete!"] [width 300] [height 50]))
-(define msg (new message% [parent done-frame]
-                 [font (make-font #:size 25 #:family 'roman #:weight 'bold)]
-                          [label "Your Sudoku Puzzle is Completed. Nice Work!"]))
 
 (define style-delta (make-object style-delta% 
                                  'change-normal-color))
@@ -275,16 +269,12 @@
                           [label "Solve"]
                           [min-width 290]
                           [min-height 100]
-                          [callback  (lambda (button event) (begin 
-                                                              (print-puzzle (step-solve-sudoku curr-sudoku #f) 0 0)
-                                                              (send done-frame show #t)))]))
+                          [callback  (lambda (button event) (print-puzzle (step-solve-sudoku curr-sudoku #f) 0 0))]))
 
 (define step-button (new button% [parent panel2] 
-                          [label "Slow Solve"]
+                          [label "Step"]
                           [min-width 290]
                           [min-height 100]
-                          [callback  (lambda (button event) (begin
-                                                              (print-puzzle (step-solve-sudoku curr-sudoku #t) 0 0)
-                                                              (send done-frame show #t)))]))
+                          [callback  (lambda (button event) (print-puzzle (step-solve-sudoku curr-sudoku #t) 0 0))]))
 
 (send frame show #t)
