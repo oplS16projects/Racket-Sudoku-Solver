@@ -14,6 +14,10 @@
                                      [stretchable-width false]	 
                                      [stretchable-height false]))
 
+
+(define style-delta (make-object style-delta% 
+                                 'change-normal-color))
+
 (new canvas% [parent panel1]
              [min-height h]
              [min-width w]
@@ -33,6 +37,17 @@
     (2 0 1 0 0 7 5 0 0) 
     (4 0 9 0 8 1 0 6 0) 
     (0 0 0 0 2 9 0 0 0)))
+
+(define ex1-table
+  '((#f #f #f #t #t #f #f #f #f) 
+    (#f #t #f #t #t #f #t #f #t) 
+    (#f #f #t #t #f #f #t #f #t) 
+    (#f #t #t #t #f #f #t #f #f) 
+    (#t #t #f #f #t #f #f #t #t) 
+    (#f #f #t #f #f #t #t #t #f) 
+    (#t #f #t #f #f #t #t #f #f) 
+    (#t #f #t #f #t #t #f #t #f) 
+    (#f #f #f #f #t #t #f #f #f)))
    
 (define (draw-grid canvas dc s)
   (send dc set-pen "black" 4 'solid)
@@ -58,19 +73,39 @@
   (send dc draw-line 0 (* 8/9 s) s (* 8/9 s)))
 
 (define (print-puzzle canvas dc s)
-  (send dc set-pen "black" 4 'solid)
   (send dc set-font (make-font #:size 25 #:family 'roman #:weight 'bold))
-  (p-nested-lst sudoku-ex1 dc s))
+  (p-nested-lst sudoku-ex1 ex1-table dc s))
 
-(define (p-lst lst y dc s)
-  (for ((val lst) (x 9)) (print-ind val x y dc s)))
+(define (p-lst lst t-table y dc s)
+  (for ((val lst) (x 9)) (print-ind val t-table x y dc s)))
 
-(define (p-nested-lst lst dc s)
-  (for ((item lst) (y 9)) (p-lst item y dc s)))
+(define (p-nested-lst lst t-table dc s)
+  (for ((item lst) (y 9)) (p-lst item t-table y dc s)))
 
-(define (print-ind val x y dc s)
-  (send dc draw-text (number->string val) (+ (* (/ x 9) s) 20) (+ (* (/ y 9) s) 15)))
+(define (print-ind val t-table x y dc s)
+  (if (is-given? t-table x y)
+      (send dc draw-text (number->string val) (+ (* (/ x 9) s) 20) (+ (* (/ y 9) s) 15))
+      (begin 
+        (send dc set-text-foreground "green")
+        (send dc draw-text (number->string val) (+ (* (/ x 9) s) 20) (+ (* (/ y 9) s) 15))
+        (send dc set-text-foreground "black"))))
 
+(define (get-row s row)
+  (if (= row 1)
+      (car s)
+      (get-row (cdr s) (- row 1))))
+
+(define (get-val s row column)
+  (define (iter row column)
+    (if (= column 1) (car row)
+        (iter (cdr row) (- column 1))))
+  (iter (get-row s row) column))
+
+(define (is-given? table x y)
+  (if (eq? (get-val table (+ 1 y) (+ 1 x)) #t) #t #f))
+
+
+                    
 (define panel2 (new horizontal-panel% [parent frame]
                                      [alignment '(center bottom)]
                                      [min-height 100]
