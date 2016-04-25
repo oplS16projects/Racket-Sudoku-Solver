@@ -2,27 +2,6 @@
 
 (require slideshow/text)
 
-(define sudoku-ex1
-  '(((0 0 0 9 7 0 0 0 0) 
-    (0 4 0 2 5 0 1 0 7) 
-    (0 0 7 6 0 0 4 0 3) 
-    (0 1 2 8 0 0 6 0 0) 
-    (9 7 0 0 4 0 0 3 5) 
-    (0 0 4 0 0 2 9 1 0) 
-    (2 0 1 0 0 7 5 0 0) 
-    (4 0 9 0 8 1 0 6 0) 
-    (0 0 0 0 2 9 0 0 0))
-    
-    ((#f #f #f #t #t #f #f #f #f) 
-    (#f #t #f #t #t #f #t #f #t) 
-    (#f #f #t #t #f #f #t #f #t) 
-    (#f #t #t #t #f #f #t #f #f) 
-    (#t #t #f #f #t #f #f #t #t) 
-    (#f #f #t #f #f #t #t #t #f) 
-    (#t #f #t #f #f #t #t #f #f) 
-    (#t #f #t #f #t #t #f #t #f) 
-    (#f #f #f #f #t #t #f #f #f))))
-
 (define (get-row s row)
   (if (= row 1)
       (car s)
@@ -105,11 +84,11 @@
 
 (define (step-solve-sudoku puzzle)
   (define (iter s row column back)
-    ;(display row)
-    ;(display " ")
-    ;(display column)
-    ;(display "\n")
-    (cond ((= row 10) s) ; Puzzle is solved!
+    (display row)
+    (display " ")
+    (display column)
+    (display "\n")
+    (cond ((= row 10) (display-sudoku s)) ; Puzzle is solved!
           ((get-val (cadr puzzle) row column) ; We ran into a fixed value that must be skipped over
            (if back ; We are back tracking and need to continue to back track
                (if (= column 1) (iter s (- row 1) 9 #t) (iter s row (- column 1) #t))
@@ -123,7 +102,53 @@
   (iter (car puzzle) 1 1 #f))
     
 
+(define (create-sudoku-obj s) ;; This attaches the list of boolean values to the sudoku.  The bools are used to see if a value in a sudoku was given.
+  (define (iter s-bools row column)
+    (cond ((> column 9) (iter s-bools (+ 1 row) 1))
+          ((> row 9) (list s s-bools))
+          ((= 0 (get-val s row column)) (iter (set s-bools row column #f) row (+ column 1)))
+          (else (iter (set s-bools row column #t) row (+ column 1)))))
+  (iter s 1 1))
 
+;;; Example sudokus listed below
+
+(define sudoku-ex1
+  (create-sudoku-obj
+   '((0 0 0 9 7 0 0 0 0) 
+    (0 4 0 2 5 0 1 0 7) 
+    (0 0 7 6 0 0 4 0 3) 
+    (0 1 2 8 0 0 6 0 0) 
+    (9 7 0 0 4 0 0 3 5) 
+    (0 0 4 0 0 2 9 1 0) 
+    (2 0 1 0 0 7 5 0 0) 
+    (4 0 9 0 8 1 0 6 0) 
+    (0 0 0 0 2 9 0 0 0))))
+
+(define sudoku-ex2
+  (create-sudoku-obj
+   '((0 0 0 2 6 0 7 0 1) 
+    (6 8 0 0 7 0 0 9 0) 
+    (1 9 0 0 0 4 5 0 0) 
+    (8 2 0 1 0 0 0 4 0) 
+    (0 0 4 6 0 2 9 0 0) 
+    (0 5 0 0 0 3 0 2 8) 
+    (0 0 9 3 0 0 0 7 4) 
+    (0 4 0 0 5 0 0 3 6) 
+    (7 0 3 0 1 8 0 0 0))))
+
+(define sudoku-ex3
+  (create-sudoku-obj
+   '((0 0 0 6 0 0 4 0 0) 
+    (7 0 0 0 0 3 6 0 0) 
+    (0 0 0 0 9 1 0 8 0) 
+    (0 0 0 0 0 0 0 0 0) 
+    (0 5 0 1 8 0 0 0 3) 
+    (0 0 0 3 0 6 0 4 5) 
+    (0 4 0 2 0 0 0 6 0) 
+    (9 0 3 0 0 0 0 0 0) 
+    (0 2 0 0 0 0 1 0 0))))
+
+;; --- End of examples ---
 
 
   
