@@ -78,8 +78,18 @@
 (define (print-ind val t-table x y dc s)
   (if (equal? val 0) (set! val " ") #f)
   (if (not(is-given? t-table x y))
-      (send dc draw-text (if (equal? val " ") val (number->string val)) (+ (* (/ x 9) s) 20) (+ (* (/ y 9) s) 15))
+      (begin
+        (send dc set-brush (new brush% [color "white"]))
+        (let ((x (* (/ 1 9) s)) (y (* (/ 1 9) s)))
+          (send dc draw-rectangle x y y x)
+          (send dc set-pen "white" 1 'transparent))
+        (send dc draw-text (if (equal? val " ") val (number->string val)) (+ (* (/ x 9) s) 20) (+ (* (/ y 9) s) 15)))
       (begin 
+        ;;; Make sure that we erase previous data before drawing
+        (send dc set-brush (new brush% [color "white"]))
+        (let ((x (* (/ 1 9) s)) (y (* (/ 1 9) s)))
+          (send dc draw-rectangle x y y x)
+          (send dc set-pen "white" 1 'transparent))
         (send dc set-text-foreground "green")
         (send dc draw-text (if (equal? val " ") val (number->string val)) (+ (* (/ x 9) s) 20) (+ (* (/ y 9) s) 15))
         (send dc set-text-foreground "black"))))
