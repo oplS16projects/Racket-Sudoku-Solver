@@ -12,7 +12,7 @@
                                      [min-height h]
                                      [min-width w]
                                      [stretchable-width false]	 
-                                     [stretchable-height false])
+                                     [stretchable-height false]))
 
 (define style-delta (make-object style-delta% 
                                  'change-normal-color))
@@ -115,12 +115,14 @@
                           [label "Solve"]
                           [min-width 290]
                           [min-height 100]
-                          [callback  (lambda (button event))]))
+                          [callback  (lambda (button event)
+                                       event)]))
 
 (define step-button (new button% [parent panel2] 
                           [label "Step"]
                           [min-width 290]
                           [min-height 100]
-                          [callback  (lambda (button event))]))
+                          [callback  (lambda (button event)
+                                       event)]))
 
 (send frame show #t)
