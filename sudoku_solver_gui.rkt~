@@ -12,7 +12,8 @@
                                      [min-height h]
                                      [min-width w]
                                      [stretchable-width false]	 
-                                     [stretchable-height false])
+                                     [stretchable-height false]))
+
 
 (define style-delta (make-object style-delta% 
                                  'change-normal-color))
@@ -24,9 +25,9 @@
               (lambda (canvas dc)
                 (draw-grid canvas dc h)
                 (draw-sub-grid canvas dc h)
-                (print-puzzle sudoku-ex t-table canvas dc h))])
+                (print-puzzle canvas dc h))])
 
-(define sudoku-ex
+(define sudoku-ex1
   '((0 0 0 9 7 0 0 0 0) 
     (0 4 0 2 5 0 1 0 7) 
     (0 0 7 6 0 0 4 0 3) 
@@ -37,7 +38,7 @@
     (4 0 9 0 8 1 0 6 0) 
     (0 0 0 0 2 9 0 0 0)))
 
-(define t-table
+(define ex1-table
   '((#f #f #f #t #t #f #f #f #f) 
     (#f #t #f #t #t #f #t #f #t) 
     (#f #f #t #t #f #f #t #f #t) 
@@ -71,9 +72,9 @@
   (send dc draw-line 0 (* 7/9 s) s (* 7/9 s))
   (send dc draw-line 0 (* 8/9 s) s (* 8/9 s)))
 
-(define (print-puzzle sudoku-ex t-table canvas dc s)
+(define (print-puzzle canvas dc s)
   (send dc set-font (make-font #:size 25 #:family 'roman #:weight 'bold))
-  (p-nested-lst sudoku-ex t-table dc s))
+  (p-nested-lst sudoku-ex1 ex1-table dc s))
 
 (define (p-lst lst t-table y dc s)
   (for ((val lst) (x 9)) (print-ind val t-table x y dc s)))
@@ -82,12 +83,11 @@
   (for ((item lst) (y 9)) (p-lst item t-table y dc s)))
 
 (define (print-ind val t-table x y dc s)
-  (if (equal? val 0) (set! val " ") #f)
-  (if (not(is-given? t-table x y))
-      (send dc draw-text (if (equal? val " ") val (number->string val)) (+ (* (/ x 9) s) 20) (+ (* (/ y 9) s) 15))
+  (if (is-given? t-table x y)
+      (send dc draw-text (number->string val) (+ (* (/ x 9) s) 20) (+ (* (/ y 9) s) 15))
       (begin 
         (send dc set-text-foreground "green")
-        (send dc draw-text (if (equal? val " ") val (number->string val)) (+ (* (/ x 9) s) 20) (+ (* (/ y 9) s) 15))
+        (send dc draw-text (number->string val) (+ (* (/ x 9) s) 20) (+ (* (/ y 9) s) 15))
         (send dc set-text-foreground "black"))))
 
 (define (get-row s row)
@@ -114,13 +114,11 @@
 (define solve-button (new button% [parent panel2] 
                           [label "Solve"]
                           [min-width 290]
-                          [min-height 100]
-                          [callback  (lambda (button event))]))
+                          [min-height 100]))
 
 (define step-button (new button% [parent panel2] 
                           [label "Step"]
                           [min-width 290]
-                          [min-height 100]
-                          [callback  (lambda (button event))]))
+                          [min-height 100]))
 
 (send frame show #t)
