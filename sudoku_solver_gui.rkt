@@ -48,6 +48,7 @@
     (#t #f #t #f #t #t #f #t #f) 
     (#f #f #f #f #t #t #f #f #f)))
    
+;;; Draw the main-grid structure on canvas.
 (define (draw-grid canvas dc s)
   (send dc set-pen "black" 4 'solid)
   (send dc draw-line (* 1/3 s) 0 (* 1/3 s) s)
@@ -55,22 +56,14 @@
   (send dc draw-line 0 (* 1/3 s) s (* 1/3 s))
   (send dc draw-line 0 (* 2/3 s) s (* 2/3 s)))
 
+;;; Draw the sub-grid structure on canvas.
 (define (draw-sub-grid canvas dc s)
   (send dc set-pen "black" 1 'solid)
-  (send dc draw-line (* 1/9 s) 0 (* 1/9 s) s)
-  (send dc draw-line (* 2/9 s) 0 (* 2/9 s) s)
-  (send dc draw-line (* 4/9 s) 0 (* 4/9 s) s)
-  (send dc draw-line (* 5/9 s) 0 (* 5/9 s) s)
-  (send dc draw-line (* 7/9 s) 0 (* 7/9 s) s)
-  (send dc draw-line (* 8/9 s) 0 (* 8/9 s) s)
-  
-  (send dc draw-line 0 (* 1/9 s) s (* 1/9 s))
-  (send dc draw-line 0 (* 2/9 s) s (* 2/9 s))
-  (send dc draw-line 0 (* 4/9 s) s (* 4/9 s))
-  (send dc draw-line 0 (* 5/9 s) s (* 5/9 s))
-  (send dc draw-line 0 (* 7/9 s) s (* 7/9 s))
-  (send dc draw-line 0 (* 8/9 s) s (* 8/9 s)))
+  (for ((i 9))
+    (send dc draw-line (* (/ i 9) s) 0 (* (/ i 9) s) s)
+    (send dc draw-line 0 (* (/ i 9) s) s (* (/ i 9) s))))
 
+;;; Print entire table to canvas
 (define (print-puzzle sudoku-ex t-table canvas dc s)
   (send dc set-font (make-font #:size 25 #:family 'roman #:weight 'bold))
   (p-nested-lst sudoku-ex t-table dc s))
@@ -81,6 +74,7 @@
 (define (p-nested-lst lst t-table dc s)
   (for ((item lst) (y 9)) (p-lst item t-table y dc s)))
 
+;;; Print each value in table based on position
 (define (print-ind val t-table x y dc s)
   (if (equal? val 0) (set! val " ") #f)
   (if (not(is-given? t-table x y))
@@ -101,11 +95,11 @@
         (iter (cdr row) (- column 1))))
   (iter (get-row s row) column))
 
+
+;;; Check if current number was given at program start.
 (define (is-given? table x y)
   (if (eq? (get-val table (+ 1 y) (+ 1 x)) #t) #t #f))
-
-
-                    
+   
 (define panel2 (new horizontal-panel% [parent frame]
                                      [alignment '(center bottom)]
                                      [min-height 100]
@@ -116,13 +110,13 @@
                           [min-width 290]
                           [min-height 100]
                           [callback  (lambda (button event)
-                                       event)]))
+                                       (print event))]))
 
 (define step-button (new button% [parent panel2] 
                           [label "Step"]
                           [min-width 290]
                           [min-height 100]
                           [callback  (lambda (button event)
-                                       event)]))
+                                       (print event))]))
 
 (send frame show #t)
