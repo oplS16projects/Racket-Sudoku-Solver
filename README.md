@@ -51,3 +51,12 @@ to work with Yusuf's GUI.
 
 ### Yusuf Yildiz @yyildiz
 For the first milestone I will be working on the GUI and the interactivity of the program which will allow the users to step through Connor's algorithm. For the second milestone, I will make the GUI work with Connors underlying algorithm implementation.
+
+### Screenshots
+
+![sudoku_blank](https://cloud.githubusercontent.com/assets/11009351/14858126/d7c90f8a-0c6c-11e6-9827-af75dd0679bd.png)
+
+![sudoku_solved](https://cloud.githubusercontent.com/assets/11009351/14858168/f9f41910-0c6c-11e6-9c6f-34ae589f92fa.png)
+
+![sudoku_solving](https://cloud.githubusercontent.com/assets/11009351/14858182/083fd8c4-0c6d-11e6-9919-ec7b14514e56.png)
+
