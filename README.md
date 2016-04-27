@@ -1,10 +1,9 @@
 # Project Title: Sudoku Solver
 
 ### Statement
-In our project, there will be a GUI display of a sudoku.  On the bottom of the display there will be a button that
-says "solve".  When pressed, the brute force algorithm will begin stepping through the sudoku and attempt to solve
-it.  There will also be an additional mode called "slow solve" that will pause for a short period of time in between
-the solve.  This will allow the user to watch and understand the algorithm that solves the sudoku.
+The goal of our project is to create a visual display of how brute force algorithms work.  
+To do this, we've created a sudoku solver which can solve any given sudoku puzzle.  
+The brute force algorithm is displayed to the user with live updates to the GUI within the step function. 
 
 ### Updates
 
