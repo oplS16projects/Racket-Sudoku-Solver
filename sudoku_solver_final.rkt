@@ -217,21 +217,12 @@
   (send dc draw-line 0 (* 1/3 s) s (* 1/3 s))
   (send dc draw-line 0 (* 2/3 s) s (* 2/3 s)))
 
+;;; Draw the sub-grid structure on canvas.
 (define (draw-sub-grid canvas dc s)
   (send dc set-pen "black" 1 'solid)
-  (send dc draw-line (* 1/9 s) 0 (* 1/9 s) s)
-  (send dc draw-line (* 2/9 s) 0 (* 2/9 s) s)
-  (send dc draw-line (* 4/9 s) 0 (* 4/9 s) s)
-  (send dc draw-line (* 5/9 s) 0 (* 5/9 s) s)
-  (send dc draw-line (* 7/9 s) 0 (* 7/9 s) s)
-  (send dc draw-line (* 8/9 s) 0 (* 8/9 s) s)
-  
-  (send dc draw-line 0 (* 1/9 s) s (* 1/9 s))
-  (send dc draw-line 0 (* 2/9 s) s (* 2/9 s))
-  (send dc draw-line 0 (* 4/9 s) s (* 4/9 s))
-  (send dc draw-line 0 (* 5/9 s) s (* 5/9 s))
-  (send dc draw-line 0 (* 7/9 s) s (* 7/9 s))
-  (send dc draw-line 0 (* 8/9 s) s (* 8/9 s)))
+  (for ((i 9))
+    (send dc draw-line (* (/ i 9) s) 0 (* (/ i 9) s) s)
+    (send dc draw-line 0 (* (/ i 9) s) s (* (/ i 9) s))))
 
 (define (print-puzzle puzzle row column)
   (send dc-global set-font (make-font #:size 25 #:family 'roman #:weight 'bold))
@@ -277,7 +268,7 @@
                           [min-height 100]
                           [callback  (lambda (button event) (begin 
                                                               (print-puzzle (step-solve-sudoku curr-sudoku #f) 0 0)
-                                                              (send done-frame show #t)))]))
+                                                              (send done-frame show #f)))]))
 
 (define step-button (new button% [parent panel2] 
                           [label "Slow Solve"]
@@ -285,6 +276,6 @@
                           [min-height 100]
                           [callback  (lambda (button event) (begin
                                                               (print-puzzle (step-solve-sudoku curr-sudoku #t) 0 0)
-                                                              (send done-frame show #t)))]))
+                                                              (send done-frame show #f)))]))
 
 (send frame show #t)
