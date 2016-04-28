@@ -27,7 +27,7 @@ We will know if our program works successfully if it is able to solve multiple d
 
 ## Favorite Scheme Expressions
 
-# Yusuf
+### Yusuf
 ```scheme
 (let ((x (* (/ x 9) s)) (y (* (/ y 9) s)))
   (send dc set-pen "white" 1 'transparent)
