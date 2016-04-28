@@ -25,6 +25,22 @@ Once our program is complete, we will have a fully working sudoku solver that wi
 ### Evaluation of Results
 We will know if our program works successfully if it is able to solve multiple different puzzles and can also display our algorithm fully working. 
 
+## Favorite Scheme Expressions
+
+# Yusuf
+```scheme
+(let ((x (* (/ x 9) s)) (y (* (/ y 9) s)))
+  (send dc set-pen "white" 1 'transparent)
+  (send dc draw-rectangle (+ x 5) (+ y 5) (/ w 11) (/ h 11)))
+  (send dc draw-text (if (equal? val " ") val (number->string val)) (+ (* (/ x 9) s) 20) (+ (* (/ y 9) s) 15)))
+```
+This was my favorite expression because I really liked the elegance and ease of use of the GUI libray in Racket.  
+This expression is a part of the draw-ind procedure which is responsible for going through and drawing each element    
+in our sudoku matrix in the correct position on the screen.  
+The procedure knows not to draw 0s onto the screen as well as how to erase the previous number that was printed in
+the location that it wants to print to so that we don't have illegible blocks on numbers printed over each other.
+
+
 ## Architecture Diagram
 
 ![arch_diagram](https://cloud.githubusercontent.com/assets/11009351/14321375/f494b164-fbe6-11e5-8e62-a30142c516d0.png)
