@@ -1,5 +1,7 @@
 # Project Title: Sudoku Solver
 
+![sudoku_solved](https://cloud.githubusercontent.com/assets/11009351/14858168/f9f41910-0c6c-11e6-9c6f-34ae589f92fa.png)
+
 ### Statement
 The goal of our project is to create a visual display of how brute force algorithms work.  
 To do this, we've created a sudoku solver which can solve any given sudoku puzzle.  
@@ -55,8 +57,6 @@ For the first milestone I will be working on the GUI and the interactivity of th
 ### Screenshots
 
 ![sudoku_blank](https://cloud.githubusercontent.com/assets/11009351/14858126/d7c90f8a-0c6c-11e6-9827-af75dd0679bd.png)
-
-![sudoku_solved](https://cloud.githubusercontent.com/assets/11009351/14858168/f9f41910-0c6c-11e6-9c6f-34ae589f92fa.png)
 
 ![sudoku_solving](https://cloud.githubusercontent.com/assets/11009351/14858182/083fd8c4-0c6d-11e6-9919-ec7b14514e56.png)
 
