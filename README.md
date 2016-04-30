@@ -40,6 +40,34 @@ in our sudoku matrix in the correct position on the screen.
 The procedure knows not to draw 0s onto the screen as well as how to erase the previous number that was printed in
 the location that it wants to print to so that we don't have illegible blocks on numbers printed over each other.
 
+### Connor
+
+```
+(define (step-solve-sudoku puzzle slow)
+  (define (iter s row column back)
+    (if slow (begin
+               (print-puzzle (list s (cadr puzzle)) row column)
+               (sleep 0.025)) (sleep 0))
+    ;(display row)
+    ;(display " ")
+    ;(display column)
+    ;(display "\n")
+    (cond ((= row 10) (list s (cadr puzzle))) ; Puzzle is solved!
+          ((get-val (cadr puzzle) row column) ; We ran into a fixed value that must be skipped over
+           (if back ; We are back tracking and need to continue to back track
+               (if (= column 1) (iter s (- row 1) 9 #t) (iter s row (- column 1) #t))
+               (if (= column 9) (iter s (+ row 1) 1 #f) (iter s row (+ column 1) #f))))
+          ((and (value-okay? s row column) (not back)) ; We have found a number that works so let's skip it
+           (if (= column 9) (iter s (+ row 1) 1 #f) (iter s row (+ column 1) #f)))
+          ((< (get-val s row column) 9) ; Try a different value in that space
+           (iter (set s row column (+ (get-val s row column) 1)) row column #f))
+          (else ; Backtrack
+           (if (= column 1) (iter (set s row column 0) (- row 1) 9 #t) (iter (set s row column 0) row (- column 1) #t)))))
+  (iter (car puzzle) 1 1 #f))
+  ```
+  
+  This is the main part of my code.  This is the iterative loop that steps through the sudoku and solves it.
+  It is my favorite chunk of code because it is where the brute force algorithm is applied.
 
 ## Architecture Diagram
 
