@@ -42,7 +42,7 @@ the location that it wants to print to so that we don't have illegible blocks on
 
 ### Connor
 
-```
+```scheme
 (define (step-solve-sudoku puzzle slow)
   (define (iter s row column back)
     (if slow (begin
